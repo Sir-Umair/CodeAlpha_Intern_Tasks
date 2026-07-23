@@ -1,9 +1,9 @@
 /**
- * AetherTranslate - Client Logic for Python Flask Backend
+ * AetherTranslate - Frontend Client Logic for Python Flask Backend
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // UI Elements
+  // Elements
   const srcLangSelect = document.getElementById('src-lang-select');
   const targetLangSelect = document.getElementById('target-lang-select');
   const btnSwap = document.getElementById('btn-swap-languages');
@@ -11,15 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const targetOutput = document.getElementById('target-output');
   const detectedLangBadge = document.getElementById('detected-lang-badge');
   const currentCharCount = document.getElementById('current-char-count');
-  const charProgressFill = document.getElementById('char-progress-fill');
   const translationSpeed = document.getElementById('translation-speed');
   const translationLoader = document.getElementById('translation-loader');
-  const activeEngineLabel = document.getElementById('active-engine-label');
-  const audioVisualizer = document.getElementById('audio-visualizer');
-
-  // Quick Preset Bars
-  const srcPresetBar = document.getElementById('src-preset-bar');
-  const targetPresetBar = document.getElementById('target-preset-bar');
 
   // Tool buttons
   const btnSrcListen = document.getElementById('btn-src-listen');
@@ -57,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const toastContainer = document.getElementById('toast-container');
 
-  // App State
+  // State
   let languagesList = {};
   let localeMap = {};
   let translationTimeout = null;
@@ -93,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('aether_theme', newTheme);
     updateThemeIcon(newTheme);
-    showToast(`Switched to ${newTheme} theme`, 'success');
+    showToast(`Switched to ${newTheme} mode`, 'success');
   });
 
   // Load languages from Python Flask backend
@@ -104,42 +97,34 @@ document.addEventListener('DOMContentLoaded', () => {
       languagesList = data.languages;
       localeMap = data.locales;
 
-      // Populate Source Select
+      // Populate Source Dropdown
       srcLangSelect.innerHTML = '';
       for (const [code, name] of Object.entries(languagesList)) {
-        const opt = document.createElement('option');
-        opt.value = code;
-        opt.textContent = name;
-        if (code === 'auto') opt.selected = true;
-        srcLangSelect.appendChild(opt);
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = name;
+        if (code === 'auto') option.selected = true;
+        srcLangSelect.appendChild(option);
       }
 
-      // Populate Target Select
+      // Populate Target Dropdown
       targetLangSelect.innerHTML = '';
       for (const [code, name] of Object.entries(languagesList)) {
         if (code === 'auto') continue;
-        const opt = document.createElement('option');
-        opt.value = code;
-        opt.textContent = name;
-        if (code === 'ur') opt.selected = true; // Default to Urdu
-        targetLangSelect.appendChild(opt);
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = name;
+        if (code === 'ur') option.selected = true; // Default to Urdu
+        targetLangSelect.appendChild(option);
       }
-
-      updatePresetPillActiveState(srcPresetBar, 'auto');
-      updatePresetPillActiveState(targetPresetBar, 'ur');
-
-    } catch (e) {
-      console.error("Language load error:", e);
-      showToast("Error connecting to Python backend", "error");
+    } catch (err) {
+      console.error("Error fetching languages from Python API:", err);
+      showToast("Failed to load language list from server", "error");
     }
   }
 
   function setupEventListeners() {
-    // Quick Preset Bar Clicks
-    setupPresetBar(srcPresetBar, srcLangSelect);
-    setupPresetBar(targetPresetBar, targetLangSelect);
-
-    // Text Input Debounce
+    // Input debounce translation
     srcTextarea.addEventListener('input', () => {
       updateCharCount();
       if (!chkAutoTranslate.checked) return;
@@ -147,17 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
       translationTimeout = setTimeout(performTranslation, 350);
     });
 
-    srcLangSelect.addEventListener('change', () => {
-      updatePresetPillActiveState(srcPresetBar, srcLangSelect.value);
-      performTranslation();
-    });
+    srcLangSelect.addEventListener('change', () => performTranslation());
+    targetLangSelect.addEventListener('change', () => performTranslation());
 
-    targetLangSelect.addEventListener('change', () => {
-      updatePresetPillActiveState(targetPresetBar, targetLangSelect.value);
-      performTranslation();
-    });
-
-    // Language Swap
+    // Swap Languages
     btnSwap.addEventListener('click', () => {
       const srcVal = srcLangSelect.value;
       const targetVal = targetLangSelect.value;
@@ -170,9 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       srcLangSelect.value = targetVal;
       targetLangSelect.value = srcVal;
 
-      updatePresetPillActiveState(srcPresetBar, targetVal);
-      updatePresetPillActiveState(targetPresetBar, srcVal);
-
       const currentTargetText = targetOutput.textContent;
       if (currentTargetText && !targetOutput.classList.contains('placeholder')) {
         srcTextarea.value = currentTargetText;
@@ -182,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       performTranslation();
     });
 
-    // Clear Buttons
+    // Clear buttons
     btnSrcClear.addEventListener('click', () => {
       srcTextarea.value = '';
       updateCharCount();
@@ -208,11 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
         await navigator.clipboard.writeText(text);
         showToast("Copied to clipboard!", "success");
       } catch (e) {
-        showToast("Copy failed", "error");
+        showToast("Failed to copy", "error");
       }
     });
 
-    // Audio Playback
+    // Python TTS playback
     btnSrcSpeak.addEventListener('click', () => {
       const text = srcTextarea.value;
       const lang = srcLangSelect.value === 'auto' ? 'en' : srcLangSelect.value;
@@ -225,10 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
       speakPythonTTS(text, targetLangSelect.value);
     });
 
-    // Voice Dictation (STT)
+    // Speech Recognition (STT)
     btnSrcListen.addEventListener('click', toggleSpeechRecognition);
 
-    // Favorite Toggle
+    // Favorite Button
     btnTargetFavorite.addEventListener('click', toggleFavorite);
 
     // Drawer Toggles
@@ -257,44 +232,17 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCloseSettings.addEventListener('click', () => settingsModal.classList.add('hide'));
     btnSaveSettings.addEventListener('click', () => {
       settingsModal.classList.add('hide');
-      const engineName = engineSelect.options[engineSelect.selectedIndex].text.split(' (')[0];
-      activeEngineLabel.textContent = `Engine: ${engineName}`;
       showToast("Preferences saved!", "success");
       performTranslation();
-    });
-  }
-
-  function setupPresetBar(bar, selectEl) {
-    if (!bar) return;
-    bar.querySelectorAll('.preset-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        selectEl.value = lang;
-        updatePresetPillActiveState(bar, lang);
-        performTranslation();
-      });
-    });
-  }
-
-  function updatePresetPillActiveState(bar, lang) {
-    if (!bar) return;
-    bar.querySelectorAll('.preset-pill').forEach(btn => {
-      if (btn.dataset.lang === lang) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
     });
   }
 
   function updateCharCount() {
     const len = srcTextarea.value.length;
     currentCharCount.textContent = `${len} / 5000`;
-    const pct = Math.min(100, (len / 5000) * 100);
-    charProgressFill.style.width = `${pct}%`;
   }
 
-  // Execute Translation via Python Backend Endpoint
+  // Translation Execution via Python Flask API
   async function performTranslation() {
     const text = srcTextarea.value.trim();
     if (!text) {
@@ -338,11 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
           detectedLangBadge.classList.add('hide');
         }
       } else {
-        showToast(data.error || "Translation failed", "error");
+        showToast(data.error || "Translation error", "error");
       }
-    } catch (e) {
+    } catch (err) {
       translationLoader.classList.add('hide');
-      showToast("Server communication error", "error");
+      console.error("Python translation endpoint error:", err);
+      showToast("Server connection error", "error");
     }
   }
 
@@ -359,8 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const url = `/api/tts?text=${encodeURIComponent(text)}&lang=${encodeURIComponent(lang)}`;
-      activeAudio = new Audio(url);
+      const audioUrl = `/api/tts?text=${encodeURIComponent(text)}&lang=${encodeURIComponent(lang)}`;
+      activeAudio = new Audio(audioUrl);
       await activeAudio.play();
     } catch (e) {
       speakBrowserFallback(text, lang);
@@ -370,18 +319,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function speakBrowserFallback(text, lang) {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
-      const utt = new SpeechSynthesisUtterance(text);
-      utt.lang = localeMap[lang] || lang;
-      window.speechSynthesis.speak(utt);
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = localeMap[lang] || lang;
+      window.speechSynthesis.speak(utterance);
     }
   }
 
-  // Speech Dictation
+  // Speech Recognition (STT)
   function initSpeechRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      btnSrcListen.style.opacity = '0.4';
-      btnSrcListen.title = 'Speech Recognition unavailable';
+      btnSrcListen.style.opacity = '0.5';
+      btnSrcListen.title = 'Speech Recognition not supported in this browser';
       return;
     }
 
@@ -390,7 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
     recognition.interimResults = true;
 
     recognition.onresult = (e) => {
-      const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
+      const transcript = Array.from(e.results)
+        .map(r => r[0].transcript)
+        .join('');
       srcTextarea.value = transcript;
       updateCharCount();
     };
@@ -398,40 +349,40 @@ document.addEventListener('DOMContentLoaded', () => {
     recognition.onend = () => {
       isListening = false;
       btnSrcListen.classList.remove('listening');
-      audioVisualizer.classList.add('hide');
       performTranslation();
     };
 
     recognition.onerror = (e) => {
       isListening = false;
       btnSrcListen.classList.remove('listening');
-      audioVisualizer.classList.add('hide');
-      showToast(`Voice input error: ${e.error}`, "error");
+      showToast(`Speech error: ${e.error}`, "error");
     };
   }
 
   function toggleSpeechRecognition() {
-    if (!recognition) return;
+    if (!recognition) {
+      showToast("Speech Recognition not supported", "error");
+      return;
+    }
+
     if (isListening) {
       recognition.stop();
       isListening = false;
       btnSrcListen.classList.remove('listening');
-      audioVisualizer.classList.add('hide');
     } else {
       const lang = srcLangSelect.value;
       recognition.lang = localeMap[lang] || lang;
       recognition.start();
       isListening = true;
       btnSrcListen.classList.add('listening');
-      audioVisualizer.classList.remove('hide');
-      showToast("Listening to voice... Speak now", "success");
+      showToast("Listening... Speak now", "success");
     }
   }
 
   // Favorites Management
   async function toggleFavorite() {
     if (!currentTranslation || !currentTranslation.translatedText) {
-      showToast("No translation to bookmark", "error");
+      showToast("No active translation to favorite", "error");
       return;
     }
 
@@ -458,11 +409,11 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast("Removed from Favorites", "success");
       }
     } catch (e) {
-      showToast("Favorites error", "error");
+      showToast("Error updating favorites", "error");
     }
   }
 
-  // Drawer Controls
+  // Slide-out Drawer
   function openDrawer(tab = 'history') {
     drawerBackdrop.classList.add('active');
     sidebarDrawer.classList.add('open');
@@ -494,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch('/api/history');
       const items = await res.json();
-      renderDrawerList(historyContainer, items);
+      renderItems(historyContainer, items);
     } catch (e) {
       console.error(e);
     }
@@ -504,40 +455,38 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch('/api/favorites');
       const items = await res.json();
-      renderDrawerList(favoritesContainer, items);
+      renderItems(favoritesContainer, items);
     } catch (e) {
       console.error(e);
     }
   }
 
-  function renderDrawerList(container, items) {
+  function renderItems(container, items) {
     container.innerHTML = '';
     if (!items || items.length === 0) {
-      container.innerHTML = '<div style="padding: 30px; text-align: center; color: var(--text-muted); font-size: 13px;">No entries saved yet</div>';
+      container.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px;">No items stored yet</div>';
       return;
     }
 
     items.forEach(item => {
       const card = document.createElement('div');
-      card.className = 'history-card-item';
-
+      card.className = 'history-item';
+      
       const srcName = languagesList[item.sourceLang] || item.sourceLang;
       const targetName = languagesList[item.targetLang] || item.targetLang;
 
       card.innerHTML = `
-        <div class="card-lang-header">${srcName} ➔ ${targetName}</div>
-        <div class="card-text-src">${escapeHtml(item.sourceText)}</div>
-        <div class="card-text-target">${escapeHtml(item.translatedText)}</div>
+        <div class="history-item-header">
+          <span>${srcName} ➔ ${targetName}</span>
+        </div>
+        <div class="history-item-src">${escapeHtml(item.sourceText)}</div>
+        <div class="history-item-target">${escapeHtml(item.translatedText)}</div>
       `;
 
       card.addEventListener('click', () => {
         srcTextarea.value = item.sourceText;
         if (item.sourceLang in languagesList) srcLangSelect.value = item.sourceLang;
         if (item.targetLang in languagesList) targetLangSelect.value = item.targetLang;
-
-        updatePresetPillActiveState(srcPresetBar, item.sourceLang);
-        updatePresetPillActiveState(targetPresetBar, item.targetLang);
-
         updateCharCount();
         performTranslation();
         closeDrawer();
@@ -547,9 +496,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function escapeHtml(str) {
+  function escapeHtml(text) {
     const div = document.createElement('div');
-    div.textContent = str || '';
+    div.textContent = text || '';
     return div.innerHTML;
   }
 
@@ -557,11 +506,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     toast.innerHTML = `
-      <i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}" style="color: var(--accent-${type === 'success' ? 'emerald' : 'coral'});"></i>
-      <span>${escapeHtml(msg)}</span>
+      <i class="toast-icon fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i>
+      <span class="toast-msg">${escapeHtml(msg)}</span>
     `;
 
     toastContainer.appendChild(toast);
+
     setTimeout(() => {
       toast.classList.add('hide');
       setTimeout(() => toast.remove(), 300);
