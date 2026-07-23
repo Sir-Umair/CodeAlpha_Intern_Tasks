@@ -4,22 +4,22 @@ This repository contains internship tasks completed for **CodeAlpha**.
 
 ---
 
-## 🚀 Task 1: Language Translation Tool (`/task1`)
+## 🐍 Task 1: Language Translation Tool (`/task1`)
 
-A modern, responsive single-page web console for language translation built with vanilla HTML5, CSS3, and JavaScript.
+A modern, high-performance multilingual translation web application powered by a **Python Flask** backend core.
 
 ### ✨ Features
-- **35+ Supported Languages**: English, Spanish, French, Urdu, Punjabi, German, Hindi, Arabic, Japanese, Korean, Chinese, and more.
-- **Auto-Detect Language**: Automatically identifies source language upon typing.
-- **Dual Translation Engines**: Supports client-side **Google API** (Fast) and **MyMemory API** (Standard) with settings-level engine switching.
-- **Voice Dictation (Speech-to-Text)**: Speak directly into the microphone with regional BCP-47 locale matching for high transcription accuracy.
-- **Text-to-Speech (TTS)**: Listen to spoken translations in native accents.
-- **Slide-out History & Favorites Drawer**: Save translation logs locally to `LocalStorage` with starring functionality and drawer controls.
-- **Claude Console Theme**: Sleek dark and light mode UI aesthetics, 3D depth status tickers, and smooth CSS transitions.
+- **Python Flask Backend (`app.py`)**: Handles translation request routing, error catching, fallback engine switching, text-to-speech stream generation, and JSON persistence.
+- **35+ Supported Languages (`languages.py`)**: Includes full support for Urdu (`ur`), Punjabi (`pa`), English, Spanish, French, German, Hindi, Arabic, Japanese, Korean, Chinese, and 25+ more.
+- **Dual Python Translation Engines (`translator.py`)**: Uses Python `requests` to route translations through **Google Translate API** and **MyMemory Translation API** with intelligent failover.
+- **Python Voice TTS (`gTTS`)**: Generates crystal-clear MP3 speech audio directly on the Python server and streams it back to the client.
+- **Speech-to-Text Dictation**: Uses BCP-47 locale maps (`ur-PK`, `pa-IN`, `en-US`) for accurate voice-to-text recognition.
+- **Persistent History & Favorites**: Saved server-side to `history.json` and `favorites.json` using Python file management.
+- **Claude Console 3D Theme**: Warm charcoal dark and paper light modes with 3D ticker cards, slide-out drawer, and toast notifications.
 
 ---
 
-## 🛠️ How to Run Locally
+## 🛠️ How to Run the Python Server
 
 1. **Clone the repository**:
    ```bash
@@ -27,15 +27,15 @@ A modern, responsive single-page web console for language translation built with
    cd CodeAlpha_Intern_Tasks/task1
    ```
 
-2. **Start a local development server**:
-   Using `npx`:
+2. **Install Python dependencies**:
    ```bash
-   npx live-server
-   ```
-   *or using Python:*
-   ```bash
-   python -m http.server 8000
+   pip install flask requests python-dotenv gTTS
    ```
 
-3. **Open in browser**:
-   Navigate to `http://localhost:8000/` or `http://127.0.0.1:8080/`.
+3. **Start the Flask server**:
+   ```bash
+   python app.py
+   ```
+
+4. **Open in browser**:
+   Navigate to `http://127.0.0.1:5000/`.

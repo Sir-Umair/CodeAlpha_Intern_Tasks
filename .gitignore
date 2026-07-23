@@ -1,12 +1,17 @@
-# Environment variables and private API keys
+# Environment variables
 .env
-.env.local
-.env.*
+task1/.env
 
-# Logs
-*.log
-npm-debug.log*
+# Python Cache & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# Dependencies and server cache
+# History & Favorites data files
+task1/history.json
+task1/favorites.json
+
+# Node & Log files
 node_modules/
-.DS_Store
+*.log

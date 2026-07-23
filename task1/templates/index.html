@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AetherTranslate - Python Powered Translator</title>
+  <meta name="description" content="State-of-the-art multilingual translator powered by Python Flask backend, supporting 35+ languages including Urdu and Punjabi.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- App Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-container">
+        <i class="fa-solid fa-brain brand-icon"></i>
+        <h1>AetherTranslate <span class="badge py-badge">Python Core</span></h1>
+      </div>
+      <div class="header-actions">
+        <button id="btn-history-toggle" class="btn-icon" title="Translation History">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>History</span>
+        </button>
+        <button id="btn-favorites-toggle" class="btn-icon" title="Favorite Translations">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Favorites</span>
+        </button>
+        <button id="btn-settings-toggle" class="btn-icon" title="Engine & Voice Settings">
+          <i class="fa-solid fa-sliders"></i>
+        </button>
+        <button id="btn-theme-toggle" class="btn-icon" title="Toggle Light/Dark Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <div class="translator-card">
+        
+        <!-- Source Language Box -->
+        <div class="box-container source-box">
+          <div class="box-header">
+            <div class="lang-selector-wrapper">
+              <i class="fa-solid fa-earth-americas select-icon"></i>
+              <select id="src-lang-select" aria-label="Source Language">
+                <option value="auto">Auto Detect</option>
+              </select>
+            </div>
+            <span id="detected-lang-badge" class="badge detected-badge hide">Detected: En</span>
+          </div>
+          <div class="box-body">
+            <textarea id="src-textarea" placeholder="Type, paste, or speak text to translate..." maxlength="5000" spellcheck="false"></textarea>
+          </div>
+          <div class="box-footer">
+            <div class="action-group-left">
+              <button id="btn-src-listen" class="btn-tool" title="Voice Input (Speech-to-Text)">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <button id="btn-src-speak" class="btn-tool" title="Listen Audio (Python TTS)">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <button id="btn-src-clear" class="btn-tool" title="Clear Text">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="action-group-right">
+              <span id="current-char-count" class="char-count">0 / 5000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centered Language Swap Button -->
+        <div class="swap-divider">
+          <button id="btn-swap-languages" class="btn-swap" title="Swap Source and Target Languages">
+            <i class="fa-solid fa-right-left"></i>
+          </button>
+        </div>
+
+        <!-- Target Language Box -->
+        <div class="box-container target-box">
+          <div class="box-header">
+            <div class="lang-selector-wrapper">
+              <i class="fa-solid fa-language select-icon"></i>
+              <select id="target-lang-select" aria-label="Target Language">
+              </select>
+            </div>
+            <div class="status-ticker">
+              <span id="translation-loader" class="loader-spinner hide"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
+              <span id="translation-speed" class="translation-time">0 ms</span>
+            </div>
+          </div>
+          <div class="box-body">
+            <div id="target-output" class="translation-result placeholder" tabindex="0">Translation will appear here in real-time...</div>
+          </div>
+          <div class="box-footer">
+            <div class="action-group-left">
+              <button id="btn-target-copy" class="btn-tool" title="Copy Translation">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+              <button id="btn-target-speak" class="btn-tool" title="Listen Audio (Python TTS)">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <button id="btn-target-favorite" class="btn-tool" title="Save to Favorites">
+                <i class="fa-regular fa-star"></i>
+              </button>
+              <button id="btn-target-clear" class="btn-tool" title="Clear Output">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Slide-Out Sidebar Drawer (History & Favorites) -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+    <aside id="sidebar-drawer" class="sidebar-drawer">
+      <div class="drawer-header">
+        <div class="sidebar-tabs">
+          <button id="tab-history" class="tab-btn active">History</button>
+          <button id="tab-favorites" class="tab-btn">Favorites</button>
+        </div>
+        <button id="btn-close-drawer" class="btn-icon" title="Close Drawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- History Panel -->
+        <div id="panel-history-list" class="sidebar-panel active">
+          <div class="panel-actions">
+            <button id="btn-clear-history" class="btn-secondary btn-sm">
+              <i class="fa-solid fa-trash"></i> Clear History
+            </button>
+          </div>
+          <div id="history-items-container" class="history-list"></div>
+        </div>
+
+        <!-- Favorites Panel -->
+        <div id="panel-favorites-list" class="sidebar-panel">
+          <div class="panel-actions">
+            <button id="btn-clear-favorites" class="btn-secondary btn-sm">
+              <i class="fa-solid fa-trash"></i> Clear Favorites
+            </button>
+          </div>
+          <div id="favorites-items-container" class="history-list"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-backdrop hide">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3><i class="fa-solid fa-gear"></i> Preferences & Engines</h3>
+          <button id="btn-close-settings" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="setting-item">
+            <label for="engine-select">Translation Backend Engine</label>
+            <select id="engine-select" class="setting-input">
+              <option value="google">Google Translate API (Python Requests)</option>
+              <option value="mymemory">MyMemory Translation API (Python Requests)</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label for="setting-auto-translate">Auto-Translate as you type</label>
+            <input type="checkbox" id="setting-auto-translate" checked>
+          </div>
+          <div class="setting-item">
+            <label for="tts-voice-select">Speech Voice Preference</label>
+            <select id="tts-voice-select" class="setting-input">
+              <option value="python-gtts">Python gTTS Engine</option>
+              <option value="browser-native">Browser Native Synthesis</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="btn-reset-settings" class="btn-secondary">Reset Defaults</button>
+          <button id="btn-save-settings" class="btn-primary">Save & Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <!-- App Script -->
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
