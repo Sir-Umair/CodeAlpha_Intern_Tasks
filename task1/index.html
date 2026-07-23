@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U_Translator | Console</title>
+  <!-- Google Fonts: Outfit (UI/Headers) & Fira Code (Monospace items) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span class="logo-text">U_Translator<span></span></span>
+        <span class="logo-badge">v1.0.0</span>
+      </div>
+
+      <div class="header-controls">
+        <div class="header-actions">
+          <button id="btn-history-toggle" class="header-btn nav-text-btn font-mono" title="Translation History">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+
+          <button id="btn-favorites-toggle" class="header-btn nav-text-btn font-mono" title="Starred Favorites">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Favorites</span>
+          </button>
+
+          <div class="header-divider"></div>
+
+          <button id="btn-theme-toggle" class="header-btn" title="Toggle Theme">
+            <!-- Moon Icon -->
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun Icon (hidden by default) -->
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+          
+          <button id="btn-settings-toggle" class="header-btn" title="Voice Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="app-workspace">
+      
+      <!-- Workspace Left: Translator Dashboard -->
+      <section class="translator-panel">
+        
+        <!-- Text Areas Container -->
+        <div class="workspace-grid">
+          <!-- Swap Languages floating button in the center -->
+          <div class="swap-btn-container">
+            <button id="btn-swap-languages" class="action-btn swap-btn" title="Swap Languages">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="17 1 21 5 17 9"></polyline>
+                <line x1="3" y1="5" x2="21" y2="5"></line>
+                <polyline points="7 23 3 19 7 15"></polyline>
+                <line x1="21" y1="19" x2="3" y2="19"></line>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Source Box -->
+          <div class="box-container src-container">
+            <div class="box-header">
+              <div class="header-title-group">
+                <span class="box-title">Source Text</span>
+                <span id="detected-lang-badge" class="badge detected-badge" style="display: none;">Detected: English</span>
+              </div>
+              <div class="lang-select-wrapper header-lang-select">
+                <select id="src-lang-select" class="lang-select">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+            
+            <textarea id="src-textarea" placeholder="Type or paste text to translate... (e.g. Hello, how are you today?)" maxlength="5000" autofocus></textarea>
+            
+            <div class="box-footer">
+              <div class="footer-actions">
+                <button id="btn-src-listen" class="tool-btn" title="Voice Input (Speech-to-Text)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                </button>
+                <button id="btn-src-speak" class="tool-btn" title="Listen (Text-to-Speech)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                </button>
+                <button id="btn-src-clear" class="tool-btn" title="Clear Text">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="char-count font-mono">
+                <span id="current-char-count">0</span> / 5000
+              </div>
+            </div>
+          </div>
+
+          <!-- Target Box -->
+          <div class="box-container target-container">
+            <div class="box-header">
+              <span class="box-title">Translated Text</span>
+              <div class="lang-select-wrapper header-lang-select">
+                <select id="target-lang-select" class="lang-select">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+            
+            <div class="output-wrapper">
+              <div id="target-output" class="output-placeholder">Translation will appear here...</div>
+              <div id="translation-loader" class="loader-overlay" style="display: none;">
+                <div class="spinner"></div>
+                <span class="loader-text font-mono">Translating...</span>
+              </div>
+            </div>
+
+            <div class="box-footer">
+              <div class="footer-actions">
+                <button id="btn-target-copy" class="tool-btn" title="Copy to Clipboard">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </button>
+                <button id="btn-target-speak" class="tool-btn" title="Listen Translation (Text-to-Speech)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                </button>
+                <button id="btn-target-favorite" class="tool-btn" title="Save to Favorites">
+                  <!-- Empty Star -->
+                  <svg class="star-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <!-- Filled Star -->
+                  <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </button>
+                <button id="btn-target-clear" class="tool-btn" title="Clear Text">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="translation-time font-mono" id="translation-speed">
+                -- ms
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </section>
+
+      <!-- Workspace Right: History & Starred Drawer (Hidden by default) -->
+      <aside id="sidebar-drawer" class="sidebar-panel">
+        
+        <div class="drawer-header">
+          <span class="drawer-title font-mono">drawer_console.log</span>
+          <button id="btn-close-drawer" class="drawer-close-btn" title="Close Drawer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="sidebar-tabs">
+          <button id="tab-history" class="tab-btn active">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>History</span>
+          </button>
+          <button id="tab-favorites" class="tab-btn">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Favorites</span>
+          </button>
+        </div>
+
+        <div class="sidebar-content">
+          <!-- History List Panel -->
+          <div id="panel-history-list" class="list-panel active">
+            <div class="list-header">
+              <span class="list-title font-mono">history.log</span>
+              <button id="btn-clear-history" class="text-link-btn" title="Clear all history">Clear All</button>
+            </div>
+            <div id="history-items-container" class="items-container">
+              <!-- Filled via JavaScript -->
+              <div class="empty-state font-mono">No translation history found.</div>
+            </div>
+          </div>
+
+          <!-- Favorites List Panel -->
+          <div id="panel-favorites-list" class="list-panel">
+            <div class="list-header">
+              <span class="list-title font-mono">favorites.db</span>
+              <button id="btn-clear-favorites" class="text-link-btn" title="Clear all favorites">Clear All</button>
+            </div>
+            <div id="favorites-items-container" class="items-container">
+              <!-- Filled via JavaScript -->
+              <div class="empty-state font-mono">No starred translations yet.</div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- Settings Modal (Voice & Speech Config) -->
+  <div id="settings-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title font-mono">voice_config.json</h3>
+        <button id="btn-close-settings" class="modal-close-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Translation Engine selection -->
+        <div class="setting-item">
+          <label for="engine-select">Translation Engine (Mode)</label>
+          <select id="engine-select" class="form-select">
+            <option value="google">Google API (Fast)</option>
+            <option value="mymemory">MyMemory API (Standard)</option>
+          </select>
+          <span class="setting-note">Select the engine for processing text</span>
+        </div>
+
+        <!-- Voice selection -->
+        <div class="setting-item">
+          <label for="tts-voice-select">Speech Synthesis Voice</label>
+          <select id="tts-voice-select" class="form-select">
+            <!-- Dynamically populated -->
+          </select>
+          <span class="setting-note">Browser-dependent native speech engines</span>
+        </div>
+
+        <!-- Speed control -->
+        <div class="setting-item">
+          <div class="setting-slider-header">
+            <label for="tts-rate">Speech Rate (Speed)</label>
+            <span id="rate-value" class="font-mono">1.0x</span>
+          </div>
+          <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1.0" class="form-slider">
+        </div>
+
+        <!-- Pitch control -->
+        <div class="setting-item">
+          <div class="setting-slider-header">
+            <label for="tts-pitch">Speech Pitch</label>
+            <span id="pitch-value" class="font-mono">1.0</span>
+          </div>
+          <input type="range" id="tts-pitch" min="0.5" max="1.5" step="0.1" value="1.0" class="form-slider">
+        </div>
+
+        <!-- Auto-Translate Toggle -->
+        <div class="setting-item checkbox-item">
+          <input type="checkbox" id="setting-auto-translate" checked>
+          <label for="setting-auto-translate">Translate instantly while typing (Debounced)</label>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button id="btn-reset-settings" class="btn-secondary font-mono">Reset Defaults</button>
+        <button id="btn-save-settings" class="btn-primary font-mono">Save Config</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer Backdrop Overlay -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Load supporting JavaScript files -->
+  <script src="languages.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Environment variables and private API keys
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies and server cache
+node_modules/
+.DS_Store
