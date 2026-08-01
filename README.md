@@ -19,23 +19,33 @@ A modern, high-performance multilingual translation web application powered by a
 
 ---
 
-## 🛠️ How to Run the Python Server
+## 🤖 Task 2: FAQ Chatbot / Intelligent FAQ Engine (`/task2`)
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Sir-Umair/CodeAlpha_Intern_Tasks.git
-   cd CodeAlpha_Intern_Tasks/task1
-   ```
+An intelligent FAQ Chatbot and FAQ Engine for **University Admissions**, featuring NLP processing, TF-IDF vectorization, and cosine similarity matching.
 
-2. **Install Python dependencies**:
-   ```bash
-   pip install flask requests python-dotenv gTTS
-   ```
+### ✨ Features
+- **NLP Preprocessing & TF-IDF Matching**: Uses tokenization, NLTK lemmatization, TF-IDF vectorization, and Cosine Similarity for accurate answer retrieval.
+- **Interactive Flask Web UI (`app.py`)**: Real-time chat interface with topic pills, animated typing status, and responsive layout.
+- **CLI Chatbot (`cli_chat.py`)**: Terminal interface for quick queries, confidence scoring, and topic listings.
+- **JSON Knowledge Base (`data/faqs.json`)**: Pre-populated database with topics on Admissions, Financial Aid, Housing, Tuition, Deadlines, and Visas.
+- **Unit Test Suite (`test_faq_engine.py`)**: Full coverage tests verifying response precision and engine reliability.
 
-3. **Start the Flask server**:
-   ```bash
-   python app.py
-   ```
+---
 
-4. **Open in browser**:
-   Navigate to `http://127.0.0.1:5000/`.
+## 🛠️ How to Run
+
+### Task 1: Language Translation Tool
+```bash
+cd task1
+pip install flask requests python-dotenv gTTS
+python app.py
+```
+Open `http://127.0.0.1:5000/`.
+
+### Task 2: FAQ Chatbot
+```bash
+cd task2
+pip install -r requirements.txt
+python app.py
+```
+Open `http://127.0.0.1:5000/`.

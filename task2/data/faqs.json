@@ -1,0 +1,607 @@
+{
+  "university_admission": {
+    "name": "GCUF Admission Support (GC University Faisalabad)",
+    "faqs": [
+      {
+        "id": "gcuf_admit_1",
+        "question": "How can I apply for admission to GCUF?",
+        "answer": "You must apply online only through the official GCUF admission portal: https://admissions.gcuf.edu.pk . Paper applications or applications sent by email/post are not accepted. Incomplete applications will not be considered.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_2",
+        "question": "What is the admission processing fee at GCUF?",
+        "answer": "The admission processing fee is Rs. 1,000/-. The admission test fee (where applicable) is Rs. 500/- per attempt. These fees are paid via bank challan generated from the online admission portal.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_3",
+        "question": "Who is eligible to apply for undergraduate programs at GCUF?",
+        "answer": "Candidates with at least 45% marks in Intermediate (FA/FSc/ICom/ICS) or equivalent (A-Level, etc.) are eligible for most programs. Applicants must have passed Intermediate in 2024 or 2025 for full merit; older sessions may be considered with a 10-mark deduction per year.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_4",
+        "question": "Is there an age limit for GCUF admission?",
+        "answer": "For Morning programs, the maximum age is 24 years. For Replica (evening/self-support) programs, the maximum age is 26 years. For private affiliated colleges, there is generally no age limit (HED rules apply).",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_5",
+        "question": "Is an entry test compulsory for all programs at GCUF?",
+        "answer": "For BS programs, an entry test is compulsory (using either HEC USAT or GCUF's own test, with minimum 50% qualifying marks). BFA (Fine Arts) requires a departmental aptitude test. LLB requires passing the HEC LAT test before the application deadline.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_6",
+        "question": "What is the syllabus of the GCUF undergraduate entry test?",
+        "answer": "For most BS programs (except Fine Arts), the test includes English (grammar, vocabulary, comprehension), Islamiat/Ethics (Ethics for non-Muslim candidates), Pakistan Studies, and General Knowledge (current affairs, science, basic facts). For Fine Arts, it is an aptitude test in drawing and design sense.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_7",
+        "question": "How many MCQs are in the GCUF entry test?",
+        "answer": "Typically 100 MCQs (1 mark each) with four options. For some language-related tests, there may be 1–2 descriptive questions instead of only MCQs.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_8",
+        "question": "How is merit calculated for undergraduate admissions at GCUF?",
+        "answer": "Admission is granted strictly on merit based on: 10% weightage for Matric (SSC) marks and 90% weightage for Intermediate (HSSC / A-Level) marks. The entry test is qualifying (min 50% required) and does not normally add to the merit percentage for most programs.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_9",
+        "question": "Can A-Level students apply for GCUF admission?",
+        "answer": "Yes. A-Level candidates are eligible provided they have at least 'C' grade in relevant subjects (e.g., Physics, Mathematics, Chemistry for science programs) and obtain an official equivalence certificate from IBCC.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_10",
+        "question": "What if I have not appeared in HEC USAT?",
+        "answer": "If you have not applied for HEC USAT, you must appear in GCUF's own entry test (where applicable), especially for Engineering, Technologies, Fine Arts (plus aptitude test), and other BS programs.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_11",
+        "question": "How do I get my admission test voucher for GCUF?",
+        "answer": "Log in to the admission portal after finalizing your application, generate and download the test voucher, and pay the test fee in the designated bank within the given dates. If you do not see the voucher, use the 'Re-finalize' button against your application.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_12",
+        "question": "Is GCUF admission provisional?",
+        "answer": "Yes. All admissions are provisional, subject to verification of your certificates from the relevant Board (BISE) or IBCC and confirmation that you meet all eligibility criteria. Failing to meet criteria will result in cancellation without fee refund.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_13",
+        "question": "Can students from outside Punjab apply for GCUF?",
+        "answer": "Applicants with Punjab domicile are fully eligible. Candidates from Balochistan, Ex-FATA, Gilgit-Baltistan, etc., can apply under their respective quota domiciles. For affiliated colleges, domicile is generally not compulsory.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_14",
+        "question": "What documents are usually required at the time of admission?",
+        "answer": "Typically: Matric (SSC) certificate/result card, Intermediate (HSSC) or equivalent result card / Part-I & Part-II, CNIC/B-Form, Domicile certificate, Character certificate, Admission test scorecard (GCUF/USAT/LAT), IBCC Equivalence certificate (if foreign/A-Level), and passport-size photographs.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_15",
+        "question": "How can I check my admission status or merit list at GCUF?",
+        "answer": "Merit lists and admission status are published on the GCUF admission portal (https://admissions.gcuf.edu.pk) and the main university website (https://gcuf.edu.pk). You must regularly check your portal account and official announcements.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_16",
+        "question": "What if I have a supplementary / re-appear case in Intermediate?",
+        "answer": "Candidates with supply cases may be ineligible for certain programs/quotas. Many programs require that you have passed 1st year without supply and complete Intermediate within the specified session. Check the latest admission advertisement for exact rules.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_17",
+        "question": "Are scholarships available at GCUF?",
+        "answer": "GCUF offers various need-based and merit-based scholarships and financial aid schemes. Details are available on the university website under Scholarships/Financial Aid and on the admission portal.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_18",
+        "question": "Where can I get help if I have a problem with the application or test?",
+        "answer": "Contact the Admission Office / Information Cell via Phone: 041-9200886, 041-9203006 or Email: admissions@gcuf.edu.pk. For test-related issues (e.g., mock test problems), the admission portal also provides helpline numbers.",
+        "category": "Academic Policies & Admin"
+      },
+      {
+        "id": "gcuf_admit_19",
+        "question": "Can I apply for more than one program at GCUF?",
+        "answer": "Yes, you can apply for multiple programs, but you may need to pay the processing fee for each application as per policy and meet the eligibility criteria for each program separately.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_20",
+        "question": "What is the difference between Morning and Replica programs at GCUF?",
+        "answer": "Morning programs: Regular, government-subsidized, lower tuition, maximum age limit of 24 years. Replica (evening/self-support): Higher fee, more flexible schedule, maximum age limit of 26 years. Merit calculation and eligibility criteria are similar.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_21",
+        "question": "What is the eligibility criterion for MS / MPhil programs at GCUF?",
+        "answer": "Candidates must possess a 16-year education (BS 4-Year or MA/MSc 2-Year) from an HEC-recognized institution with at least 2.50/4.00 CGPA (Semester System) or 50% marks (Annual System), and clear the GCUF Departmental Entry Test.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_22",
+        "question": "What are the eligibility requirements for PhD admissions at GCUF?",
+        "answer": "Applicants must hold an MS/MPhil degree in the relevant discipline with a minimum CGPA of 3.00 out of 4.00, pass the GCUF Subject GRE/GAT test with at least 60% marks, and clear the departmental interview.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_23",
+        "question": "What are the eligibility requirements for Pharm-D and DVM at GCUF?",
+        "answer": "Applicants must have passed FSc Pre-Medical or equivalent examination with a minimum of 60% unadjusted marks for Pharm-D and DVM programs.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_24",
+        "question": "Can pre-medical students apply for BS Computer Science or Software Engineering at GCUF?",
+        "answer": "Yes, FSc Pre-Medical students are eligible for BS CS and BS SE at GCUF, provided they complete mandatory deficiency Mathematics courses in their initial semesters as per HEC guidelines.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_25",
+        "question": "What are Associate Degree Programs (ADP 2-Year) at GCUF?",
+        "answer": "ADP is a 2-year (4-semester) skill-oriented undergraduate program offered in various disciplines. Students completing ADP can transition into the 5th semester of the corresponding BS program.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_26",
+        "question": "Can result-awaiting students apply for GCUF BS admissions?",
+        "answer": "Yes, candidates awaiting their HSSC Part-II or A-Level results can apply based on a Hope Certificate issued by their college principal, provided their Part-I score meets the minimum eligibility.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_27",
+        "question": "Are Diploma of Associate Engineer (DAE) holders eligible for GCUF admissions?",
+        "answer": "Yes, 3-year DAE holders in relevant technical fields can apply against reserved DAE seats and open merit in selected BS engineering technology and computer science programs.",
+        "category": "General & Eligibility"
+      },
+      {
+        "id": "gcuf_admit_28",
+        "question": "Can I apply for multiple departments or campuses of GCUF on one portal profile?",
+        "answer": "Yes, candidates can apply for multiple degree programs across Main Campus, Allama Iqbal Campus, and sub-campuses within the same account profile, generating separate fee vouchers for each program.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_29",
+        "question": "How do I correct errors in my submitted GCUF online application?",
+        "answer": "Before the closing date, applicants can edit details via the portal profile edit tab. After submission, data corrections must be requested in person at the GCUF Admission Cell (Main Campus).",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_30",
+        "question": "What documents must be uploaded on the GCUF admission portal?",
+        "answer": "You must upload scanned JPEG images of your Matric DMC, Intermediate DMC (or Hope Certificate), Domicile certificate, CNIC/B-Form, applicant photograph, and paid bank voucher.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_31",
+        "question": "Do I need to send printed application hard copies to GCUF?",
+        "answer": "Initial online applications do NOT require physical submission of hard copies. Hard copies are required only during physical document verification after merit list selection.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_32",
+        "question": "How can I check if my paid bank voucher is verified on the portal?",
+        "answer": "Paid status will update to 'Verified' on your portal dashboard within 24 to 48 hours. You can also upload a clear photo of the paid bank receipt on the portal to speed up verification.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_33",
+        "question": "How do I reset my GCUF admission portal password if forgotten?",
+        "answer": "Click 'Forgot Password' on the login page of admissions.gcuf.edu.pk, enter your CNIC/Email, and follow the password reset link sent to your registered email.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_34",
+        "question": "Is late application submission allowed at GCUF?",
+        "answer": "Applications are strictly closed after the advertised deadline. However, if the Admission Committee extends the date, a late fee surcharge may apply as announced on the official website.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_35",
+        "question": "Can I change my program choices after the admission portal closes?",
+        "answer": "Program choices cannot be altered after the application closing date. However, automatic preference upgrading occurs if seats open up in higher preferences listed on your application.",
+        "category": "Application Process"
+      },
+      {
+        "id": "gcuf_admit_36",
+        "question": "What is the pattern of the GCUF MS / MPhil Departmental Entry Test?",
+        "answer": "The test consists of 100 MCQs (Subject-Specific 70%, English 15%, Analytical Reasoning 15%) with a duration of 90 minutes. A minimum score of 50% is required to qualify.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_37",
+        "question": "What is the test pattern for PhD admissions at GCUF?",
+        "answer": "The PhD entrance test is a subject-based GRE test comprising 100 MCQs testing advanced subject knowledge and research aptitude. The passing score is 60%.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_38",
+        "question": "How do I download the GCUF Entry Test Roll Number Slip?",
+        "answer": "Roll number slips are generated on the GCUF Admission Portal dashboard 3 to 5 days prior to the test date. Applicants must print and bring it to the test center.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_39",
+        "question": "Is GAT General by NTS accepted for MS/MPhil at GCUF?",
+        "answer": "GCUF conducts its own departmental GAT. However, valid NTS GAT General scores (minimum 50%) may be accepted if approved by the respective Departmental Board of Studies.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_40",
+        "question": "Is there negative marking in GCUF entrance tests?",
+        "answer": "No, there is no negative marking in GCUF undergraduate or postgraduate entry tests unless explicitly stated in the exam instructions.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_41",
+        "question": "What documents must be presented at the GCUF entry test center?",
+        "answer": "Candidates must bring their printed Roll Number Slip, original CNIC/B-Form/Smart Card, and a blue/black ballpoint pen. Cell phones and smartwatches are strictly banned.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_42",
+        "question": "Where are entry test results published by GCUF?",
+        "answer": "Entry test results are published on the GCUF official website (gcuf.edu.pk) and displayed on department notice boards within a week of the exam.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_43",
+        "question": "What happens during the MS / PhD interview at GCUF?",
+        "answer": "The interview panel assesses academic background, subject understanding, research proposal feasibility (for PhD), and motivation for postgraduate studies.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_44",
+        "question": "Can I apply for re-totaling of my entry test marks at GCUF?",
+        "answer": "Yes, candidates can apply for answer sheet re-totaling within 3 days of result publication by submitting a formal application and paying a re-checking fee at the Controller Office.",
+        "category": "Entry Test & Assessment"
+      },
+      {
+        "id": "gcuf_admit_45",
+        "question": "How is MS / MPhil merit calculated at GCUF?",
+        "answer": "MS/MPhil merit weightage: 40% Academic Record (BS/MA marks/CGPA) + 40% GCUF Departmental Test + 20% Interview & Research Publications.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_46",
+        "question": "Where can I check the GCUF merit lists?",
+        "answer": "Official merit lists are uploaded on gcuf.edu.pk and displayed at the respective Department Chairpersons' offices at Main Campus (Jhang Road) and Allama Iqbal Campus.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_47",
+        "question": "What does 'Provisionally Selected' indicate on the GCUF merit list?",
+        "answer": "It indicates provisional selection based on online marks. Final admission is subject to physical document verification and submission of original fee challan within the deadline.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_48",
+        "question": "How many merit lists does GCUF display for each session?",
+        "answer": "GCUF typically displays 3 main merit lists. If seats remain unfilled, supplementary/4th merit lists or open-admission lists are announced.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_49",
+        "question": "How many days are given to pay fees after a merit list is published at GCUF?",
+        "answer": "Candidates must deposit their semester fee within 3 working days of merit list display; failing which the seat is reallocated to the next waiting candidate.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_50",
+        "question": "How many extra marks are added for Hafiz-e-Quran at GCUF?",
+        "answer": "20 marks are added to the Intermediate total marks of verified Hafiz-e-Quran candidates after passing the oral test conducted by the GCUF Hifz Committee.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_51",
+        "question": "What happens if two candidates have the exact same aggregate merit score?",
+        "answer": "If merit scores tie, the candidate with higher marks in Intermediate FSc/FA gets preference; if still tied, higher Matric marks, followed by older age.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_52",
+        "question": "How does automatic upgrade of program preferences work at GCUF?",
+        "answer": "If a candidate selected in a lower preference vacates a seat in a higher preference, the portal automatically upgrades them in subsequent merit lists.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_53",
+        "question": "Can I freeze my current preference and decline further automatic upgrades at GCUF?",
+        "answer": "Yes, candidates satisfied with their current program can submit a 'Freeze Preference' application to the Admission Cell to stop automatic upgrading.",
+        "category": "Merit List & Aggregate"
+      },
+      {
+        "id": "gcuf_admit_54",
+        "question": "What is the first-semester fee for BS Science programs (Morning) at GCUF?",
+        "answer": "The first-semester morning fee for BS Science/CS programs ranges approximately between PKR 42,000 to PKR 58,000 (including admission, registration, and lab security fees).",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_55",
+        "question": "What is the tuition fee structure for BS Replica / Evening programs at GCUF?",
+        "answer": "Evening (Replica) BS tuition fees are higher than morning, ranging approximately from PKR 55,000 to PKR 75,000 per semester depending on the department.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_56",
+        "question": "What is the fee structure for MS / MPhil and PhD programs at GCUF?",
+        "answer": "MS/MPhil morning semester fee is around PKR 50,000 to PKR 65,000; PhD fee is around PKR 55,000 to PKR 72,000 per semester.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_57",
+        "question": "Where can I deposit the GCUF admission fee challan?",
+        "answer": "Fees can be deposited at the Bank of Punjab (BOP) GCUF Branch, National Bank of Pakistan (NBP) GCUF Branch, or any online BOP/NBP branch across Pakistan.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_58",
+        "question": "What is the HEC fee refund policy followed by GCUF?",
+        "answer": "100% tuition refund if admission is cancelled within 7 days of classes; 50% refund within 8–15 days; 0% refund after 15 days of class commencement.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_59",
+        "question": "Are security deposits refundable when leaving GCUF?",
+        "answer": "Yes, library, lab, and university caution money security deposits are fully refundable upon graduation or official withdrawal after clearance.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_60",
+        "question": "Can GCUF semester fees be paid in installments?",
+        "answer": "Students facing severe financial constraints can apply to the Treasurer / Registrar Office for permission to pay the fee in two equal installments.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_61",
+        "question": "What one-time charges are included in the 1st semester fee challan?",
+        "answer": "First-semester vouchers include one-time Admission Fee, University Registration Fee, Library & Lab Security, Student Card Fee, and Building Fund.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_62",
+        "question": "Is there any fee concession for children of GCUF employees?",
+        "answer": "Yes, children of regular/retired GCUF employees get tuition fee waivers as per University Syndicate rules and HEC regulations.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_63",
+        "question": "What should I do if my fee deposit slip is misplaced?",
+        "answer": "Obtain a verified copy of the paid transaction from the depositing bank branch and submit a reconciliation application to the GCUF Treasurer Office.",
+        "category": "Tuition & Fees"
+      },
+      {
+        "id": "gcuf_admit_64",
+        "question": "What scholarships are managed by the GCUF Student Financial Aid Office (SFAO)?",
+        "answer": "SFAO GCUF manages HEC Need-Based Scholarships, PEEF Scholarships, Punjab Undergraduate Scholarships, Mora Zakat Scholarships, and GCUF Endowment Fund.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_65",
+        "question": "How do I apply for the HEC Need-Based Scholarship at GCUF?",
+        "answer": "Apply on the HEC portal during announced dates, print the application form, attach family income proof and utility bills, and submit to SFAO GCUF (Main Campus).",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_66",
+        "question": "Who is eligible for the PEEF Scholarship at GCUF?",
+        "answer": "Punjab-domiciled students who secured at least 60% in Intermediate/Graduation with a total monthly family income below PKR 60,000 can apply for PEEF.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_67",
+        "question": "Does GCUF offer Kinship Fee Concession for siblings?",
+        "answer": "Yes, when two real brothers/sisters are enrolled concurrently at GCUF, the younger sibling receives a 50% tuition fee concession upon application.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_68",
+        "question": "Does GCUF offer Merit Scholarships for top positions?",
+        "answer": "Yes, semester tuition fee waivers are awarded to top 3 position holders in each degree discipline based on their semester GPA.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_69",
+        "question": "What is the Mora Zakat Scholarship at GCUF?",
+        "answer": "Mora Zakat Scholarship provides financial aid to Muslim students belonging to needy backgrounds, funded by District Zakat Committees in Punjab.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_70",
+        "question": "What minimum CGPA is required to retain a scholarship at GCUF?",
+        "answer": "Students must maintain a minimum CGPA of 3.00 (or pass all subjects without probation) to continue receiving financial aid each semester.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_71",
+        "question": "Are research fellowships available for PhD scholars at GCUF?",
+        "answer": "Yes, HEC Indigenous PhD Fellowships, ORIC research grants, and university teaching assistantships are available for qualified PhD scholars at GCUF.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_72",
+        "question": "How do students apply for Emergency Financial Assistance at GCUF?",
+        "answer": "In cases of sudden parental loss or financial crisis, students can apply directly to the Chairman SFAO / Vice Chancellor for emergency grants.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_73",
+        "question": "What documents are required when applying for financial aid at GCUF?",
+        "answer": "Father/Guardian income slip, last 3 months electricity/gas bills, rental agreement copy (if tenant), CNIC copies of student and guardian, and academic DMCs.",
+        "category": "Scholarships & Financial Aid"
+      },
+      {
+        "id": "gcuf_admit_74",
+        "question": "What quota categories are available for BS admissions at GCUF?",
+        "answer": "Reserved categories include Sports, Co-Curricular, Hafiz-e-Quran, Disabled/Special Persons, Overseas Pakistanis, University Employees' Children, and Provincial Quotas.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_75",
+        "question": "How do I apply for the Sports Quota at GCUF?",
+        "answer": "Select 'Sports Quota' on the online portal, attach certified sports achievement certificates (Board/Provincial level), and report for physical trials conducted by GCUF Directorate of Sports.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_76",
+        "question": "What co-curricular activities qualify for quota seats at GCUF?",
+        "answer": "Quotas exist for Qirat, Naat, Debates, Drama, Music, and Rover Scouting. Trials are conducted by the GCUF Department of Student Affairs (DSA).",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_77",
+        "question": "How do disabled students apply under Special Persons Quota at GCUF?",
+        "answer": "Applicants submit a Disability Certificate issued by the Social Welfare Department/Disability Board and appear before the GCUF Medical Standing Committee.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_78",
+        "question": "How can Overseas Pakistanis apply for GCUF seats?",
+        "answer": "Overseas Pakistanis or their children apply under Overseas Quota by uploading parent's valid Iqama/Work Visa, Passport copy, and IBCC equivalence.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_79",
+        "question": "Are there reserved seats for Gilgit-Baltistan, AJK, and FATA at GCUF?",
+        "answer": "Yes, seats are allocated for students from GB, AJK, and FATA, processed through their respective nomination boards or direct university quotas.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_80",
+        "question": "How are Hafiz-e-Quran trials conducted at GCUF?",
+        "answer": "Candidates claiming Hafiz-e-Quran status must appear before the GCUF Hifz Committee for oral Quran recitation testing before merit list preparation.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_81",
+        "question": "Can I apply on both Open Merit and Quota seats at GCUF?",
+        "answer": "Yes, applicants can select Open Merit as well as multiple Quota categories on the online portal during application submission.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_82",
+        "question": "If selected on both Open Merit and Quota at GCUF, which seat is allotted?",
+        "answer": "The candidate is placed on Open Merit by default, freeing up the quota seat for the next eligible quota applicant.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_83",
+        "question": "Is there a quota for Army personnel children at GCUF?",
+        "answer": "Designated quota seats are available for children of Shaheed and serving Armed Forces personnel as per university syndicate policies.",
+        "category": "Quota & Reserved Seats"
+      },
+      {
+        "id": "gcuf_admit_84",
+        "question": "What original documents are required for physical verification at GCUF?",
+        "answer": "Selected candidates must present original Matric DMC, Intermediate DMC, Domicile, CNIC/B-Form, Character Certificate, passport photos, and paid fee voucher.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_85",
+        "question": "Is HEC attestation required for postgraduate degrees at GCUF?",
+        "answer": "Yes, MS/MPhil and PhD applicants must submit HEC-attested copies of their undergraduate transcripts and degree certificates.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_86",
+        "question": "What is a Migration Certificate / NOC and when must it be submitted to GCUF?",
+        "answer": "Applicants passing intermediate/graduation from boards or universities outside BISE Faisalabad/Punjab must submit a NOC/Migration Certificate within 30 days.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_87",
+        "question": "Can I submit an affidavit if my official Intermediate certificate is delayed?",
+        "answer": "Yes, a stamp-paper affidavit signed by parent/guardian promising submission within a specified period is accepted provisionally.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_88",
+        "question": "How can foreign degree holders obtain HEC Equivalence for GCUF?",
+        "answer": "Apply on the HEC Online Equivalence Portal, submit foreign credentials for evaluation, and provide the official HEC Equivalence Letter to GCUF.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_89",
+        "question": "What happens if forged or fake documents are submitted to GCUF?",
+        "answer": "Submission of false or altered credentials results in immediate admission cancellation, fee forfeiture, blacklisting, and legal prosecution under criminal law.",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_90",
+        "question": "Where is document verification conducted on GCUF Main Campus?",
+        "answer": "Verification counters operate at respective Department Buildings and the Student Financial/Admission Center (Main Campus, Jhang Road).",
+        "category": "Document Verification"
+      },
+      {
+        "id": "gcuf_admit_91",
+        "question": "Are hostel facilities available for male and female students at GCUF?",
+        "answer": "Yes, GCUF provides residential hostels for male and female outstation students at Main Campus and New Campus, allotted strictly on merit and distance.",
+        "category": "Hostel & Transport"
+      },
+      {
+        "id": "gcuf_admit_92",
+        "question": "How do I apply for GCUF hostel accommodation?",
+        "answer": "After paying university tuition fee, submit a Hostel Application Form on the portal or at the Senior Hall Warden Office (GCUF Main Campus).",
+        "category": "Hostel & Transport"
+      },
+      {
+        "id": "gcuf_admit_93",
+        "question": "What is the semester fee for GCUF hostels?",
+        "answer": "Hostel dues range between PKR 20,000 to PKR 30,000 per semester (excluding monthly mess expenses), payable per term.",
+        "category": "Hostel & Transport"
+      },
+      {
+        "id": "gcuf_admit_94",
+        "question": "Does GCUF operate bus transport services for day scholars?",
+        "answer": "Yes, GCUF maintains a fleet of buses providing transportation across major city routes in Faisalabad for registered student commuters.",
+        "category": "Hostel & Transport"
+      },
+      {
+        "id": "gcuf_admit_95",
+        "question": "How do I obtain a GCUF University Transport Bus Pass?",
+        "answer": "Apply at the Transport Office (Main Campus), select your route, deposit the semester bus fee at BOP/NBP, and collect your Bus Pass.",
+        "category": "Hostel & Transport"
+      },
+      {
+        "id": "gcuf_admit_96",
+        "question": "When do classes start for Fall and Spring sessions at GCUF?",
+        "answer": "Fall session classes generally start in September/October, while Spring session classes begin in February/March following orientation week.",
+        "category": "Academic Policies & Admin"
+      },
+      {
+        "id": "gcuf_admit_97",
+        "question": "What is the mandatory attendance requirement at GCUF?",
+        "answer": "Students must maintain a minimum of 75% attendance in theory lectures and practical labs to sit for final semester examinations.",
+        "category": "Academic Policies & Admin"
+      },
+      {
+        "id": "gcuf_admit_98",
+        "question": "Can I freeze my first semester at GCUF after admission?",
+        "answer": "Freezing the 1st semester is not permitted except under severe medical emergencies approved by the University Health Board and Academic Council.",
+        "category": "Academic Policies & Admin"
+      },
+      {
+        "id": "gcuf_admit_99",
+        "question": "What is CGPA probation and how is it handled at GCUF?",
+        "answer": "A student scoring CGPA below 2.00 is placed on probation. Failing to raise CGPA to 2.00 after allowable chances leads to academic drop.",
+        "category": "Academic Policies & Admin"
+      },
+      {
+        "id": "gcuf_admit_100",
+        "question": "What are the official GCUF Admission Helpline contact details?",
+        "answer": "Contact GCUF Admission Cell at +92-41-9201110 / +92-41-9200886 / +92-41-9203006, email admissions@gcuf.edu.pk, or visit the Admission Cell, Vice Chancellor Block, Jhang Road, Faisalabad.",
+        "category": "Academic Policies & Admin"
+      }
+    ]
+  }
+}
