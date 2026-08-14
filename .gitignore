@@ -8,6 +8,13 @@ __pycache__/
 *.pyo
 *.pyd
 
+# Virtual Environments
+venv/
+.venv/
+env/
+task3/venv/
+task3/backend/venv/
+
 # History & Favorites data files
 task1/history.json
 task1/favorites.json
@@ -15,3 +22,8 @@ task1/favorites.json
 # Node & Log files
 node_modules/
 *.log
+
+# Generated Audio Outputs
+task3/backend/outputs/gen_track_*
+task3/outputs/gen_track_*
+

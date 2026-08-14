@@ -32,6 +32,20 @@ An intelligent FAQ Chatbot and FAQ Engine for **University Admissions**, featuri
 
 ---
 
+## 🎵 Task 3: Music Generation / AI Music Generator Studio (`/task3`)
+
+An end-to-end AI Music Generation Web Application & Deep Learning Studio powered by a **Custom LSTM Neural Network**, **FastAPI Backend Engine**, **Web Audio Synthesizer**, and **Interactive Web Interface**.
+
+### ✨ Features
+- **LSTM Neural Network (`backend/model.py`)**: Pure NumPy Recurrent Neural Network with LSTM cells, Softmax sampling, temperature control, and Backpropagation Through Time (BPTT).
+- **MIDI Preprocessor & Vocabulary (`backend/preprocess.py`)**: Parses MIDI files using `music21`, builds note token vocabulary (`data/vocab.json`), and serializes dataset sequences (`data/processed_data.npz`).
+- **Software Synthesizer (`backend/synth.py`)**: Converts generated MIDI sequences into WAV audio using pure Python sound synthesis & ADSR envelopes.
+- **FastAPI REST Backend (`backend/app.py`)**: High-performance REST server with endpoints for track generation, dataset inspection, background model training, MIDI upload, and audio streaming.
+- **Interactive Web Studio (`frontend/`)**: Futuristic UI with real-time visualizers, piano roll previews, temperature control sliders, and instant WAV audio playback.
+- **Automated Unit Tests (`backend/tests/`)**: 100% passing test suite for model math, preprocessing, vocabulary generation, and track export.
+
+---
+
 ## 🛠️ How to Run
 
 ### Task 1: Language Translation Tool
@@ -49,3 +63,12 @@ pip install -r requirements.txt
 python app.py
 ```
 Open `http://127.0.0.1:5000/`.
+
+### Task 3: AI Music Generator Studio
+```bash
+cd task3/backend
+pip install -r requirements.txt
+python ../run.py
+```
+Open `http://localhost:8000/`.
+

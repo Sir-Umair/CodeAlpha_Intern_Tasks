@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Harmony | AI Music Generation Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome / Lucide Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo-group">
+                <div class="logo-icon"><i class="fa-solid fa-compact-disc fa-spin-slow"></i></div>
+                <div class="logo-text">
+                    <h1>Aura Harmony</h1>
+                    <span class="subtitle">AI LSTM Music Generator</span>
+                </div>
+            </div>
+            
+            <div class="status-badges">
+                <div class="badge" id="badge-model">
+                    <span class="dot offline"></span>
+                    <span class="badge-text">Model: Checking...</span>
+                </div>
+                <div class="badge" id="badge-vocab">
+                    <i class="fa-solid fa-list-ol"></i>
+                    <span>Vocab: <strong id="vocab-count">0</strong></span>
+                </div>
+                <div class="badge" id="badge-dataset">
+                    <i class="fa-solid fa-file-audio"></i>
+                    <span>Files: <strong id="dataset-count">0</strong></span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="open-train-modal-btn">
+                    <i class="fa-solid fa-brain"></i> Train Neural Net
+                </button>
+                <button class="btn btn-secondary" id="open-upload-modal-btn">
+                    <i class="fa-solid fa-upload"></i> Upload MIDI
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Studio Grid -->
+        <main class="studio-grid">
+            <!-- Left Column: Synthesizer & Player -->
+            <section class="left-panel">
+                <!-- Interactive Virtual Piano Keyboard -->
+                <div class="card piano-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-keyboard"></i> Virtual Synthesizer Keyboard</h2>
+                        <span class="hint-text">Click keys to trigger live pitch preview</span>
+                    </div>
+                    <div class="piano-wrapper">
+                        <div class="piano-keyboard" id="piano-keyboard">
+                            <!-- Dynamically Generated 2 Octaves (C3 to B4) -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Track Player Card -->
+                <div class="card player-card" id="player-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-circle-play"></i> Track Output Player</h2>
+                        <span class="track-status" id="track-status-label">No track generated yet</span>
+                    </div>
+                    <div class="player-body">
+                        <div class="audio-controls-row">
+                            <button class="play-btn" id="play-pause-btn" disabled>
+                                <i class="fa-solid fa-play" id="play-icon"></i>
+                            </button>
+                            <div class="track-info">
+                                <span class="track-title" id="track-title">generated_track.wav</span>
+                                <div class="seek-bar-container">
+                                    <input type="range" id="seek-bar" value="0" min="0" max="100" disabled>
+                                    <div class="time-display">
+                                        <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="volume-container">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <input type="range" id="vol-slider" min="0" max="1" step="0.05" value="0.8">
+                            </div>
+                        </div>
+
+                        <div class="export-actions">
+                            <a href="#" class="btn btn-outline" id="download-wav-btn" download disabled>
+                                <i class="fa-solid fa-file-wave"></i> Download WAV
+                            </a>
+                            <a href="#" class="btn btn-outline" id="download-midi-btn" download disabled>
+                                <i class="fa-solid fa-file-code"></i> Download MIDI
+                            </a>
+                        </div>
+
+                        <!-- Generated Tokens Inspector -->
+                        <div class="tokens-inspector">
+                            <label><i class="fa-solid fa-network-wired"></i> Neural Token Sequence (<span id="token-count">0</span> notes):</label>
+                            <div class="tokens-scroll" id="tokens-container">
+                                <span class="placeholder-token">Tokens will appear here...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Generation Controls -->
+            <section class="right-panel">
+                <div class="card generator-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-sliders"></i> Generation Studio Controls</h2>
+                    </div>
+                    <form id="generator-form">
+                        <!-- Preset Templates -->
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-wand-magic-sparkles"></i> Preset Inspiration</label>
+                            <div class="preset-pills">
+                                <button type="button" class="preset-chip active" data-preset="classical">Classical Harmony</button>
+                                <button type="button" class="preset-chip" data-preset="jazz">Jazz Blues</button>
+                                <button type="button" class="preset-chip" data-preset="ambient">Melodic Ambient</button>
+                                <button type="button" class="preset-chip" data-preset="staccato">Fast Arpeggio</button>
+                            </div>
+                        </div>
+
+                        <!-- Track Length Slider -->
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label for="num-notes-slider"><i class="fa-solid fa-arrow-right-long"></i> Sequence Length (Notes)</label>
+                                <span class="val-display" id="num-notes-val">64 notes</span>
+                            </div>
+                            <input type="range" id="num-notes-slider" min="16" max="128" step="8" value="64">
+                            <div class="slider-ticks">
+                                <span>16 Short</span>
+                                <span>64 Medium</span>
+                                <span>128 Extended</span>
+                            </div>
+                        </div>
+
+                        <!-- Temperature Slider -->
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label for="temperature-slider"><i class="fa-solid fa-fire"></i> Creativity (Temperature)</label>
+                                <span class="val-display" id="temperature-val">0.90 (Harmonic)</span>
+                            </div>
+                            <input type="range" id="temperature-slider" min="0.2" max="1.8" step="0.05" value="0.9">
+                            <div class="slider-ticks">
+                                <span>0.2 Predictable</span>
+                                <span>1.0 Balanced</span>
+                                <span>1.8 Experimental</span>
+                            </div>
+                        </div>
+
+                        <!-- Seed Token Selection -->
+                        <div class="form-group">
+                            <label for="seed-token-select"><i class="fa-solid fa-key"></i> Starting Pitch Seed</label>
+                            <select id="seed-token-select">
+                                <option value="">Random Choice</option>
+                                <option value="60">Middle C (MIDI 60)</option>
+                                <option value="64">E4 Pitch (MIDI 64)</option>
+                                <option value="67">G4 Pitch (MIDI 67)</option>
+                                <option value="72">High C5 (MIDI 72)</option>
+                                <option value="60.64.67">C-Major Triad Chord</option>
+                            </select>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button type="submit" class="btn btn-primary btn-hero" id="generate-btn">
+                            <i class="fa-solid fa-sparkles"></i> Generate Music Track
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Neural Model Architecture Card -->
+                <div class="card info-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-microchip"></i> Engine Specifications</h2>
+                    </div>
+                    <ul class="spec-list">
+                        <li><span>Architecture</span> <strong>Numpy Multi-Gate LSTM</strong></li>
+                        <li><span>Embedding Size</span> <strong>64 Dimensions</strong></li>
+                        <li><span>Hidden Neurons</span> <strong>128 Memory Units</strong></li>
+                        <li><span>Optimization</span> <strong>Adam with Gradient Clip</strong></li>
+                        <li><span>Sampling</span> <strong>Softmax + Temp Scaling</strong></li>
+                        <li><span>Audio Output</span> <strong>MIDI + 44.1kHz WAV</strong></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal: Training Manager -->
+        <div class="modal-backdrop" id="train-modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3><i class="fa-solid fa-brain"></i> Train Neural Network</h3>
+                    <button class="close-btn" id="close-train-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-desc">Train the LSTM model on current dataset files to improve melodic coherence and expand vocabulary.</p>
+                    
+                    <form id="train-form">
+                        <div class="form-group">
+                            <label for="train-epochs">Epochs</label>
+                            <input type="number" id="train-epochs" min="5" max="150" value="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="train-lr">Learning Rate</label>
+                            <input type="number" id="train-lr" step="0.001" min="0.0005" max="0.05" value="0.005">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="start-train-btn">
+                            <i class="fa-solid fa-play"></i> Start Training Loop
+                        </button>
+                    </form>
+
+                    <div class="training-status-box" id="training-status-box" style="display: none;">
+                        <div class="status-header">
+                            <span>Training Progress:</span>
+                            <strong id="train-epoch-text">Epoch 0 / 0</strong>
+                        </div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" id="train-progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div class="loss-metric">
+                            Current Loss: <strong id="train-loss-text">0.0000</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: MIDI Uploader -->
+        <div class="modal-backdrop" id="upload-modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3><i class="fa-solid fa-cloud-arrow-up"></i> Add Custom MIDI File</h3>
+                    <button class="close-btn" id="close-upload-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="dropzone" id="midi-dropzone">
+                        <i class="fa-solid fa-file-circle-plus dropzone-icon"></i>
+                        <p>Drag & Drop your <code>.mid</code> or <code>.midi</code> file here</p>
+                        <span>or click to browse from device</span>
+                        <input type="file" id="midi-file-input" accept=".mid,.midi" hidden>
+                    </div>
+                    <div class="upload-feedback" id="upload-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <!-- Audio element for playback -->
+    <audio id="audio-player"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
